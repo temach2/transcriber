@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  qwen-transcriber:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: qwen-medical-transcriber:latest
+    container_name: qwen-transcriber
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ports:
+      - "7860:7860"
+    volumes:
+      # Монтирование папки с моделями (важно: модели должны быть загружены заранее)
+      - ./models:/app/models:ro
+      # Монтирование папки для загрузок
+      - ./uploads:/app/uploads:rw
+      # Монтирование папки для результатов
+      - ./output:/app/output:rw
+      # Монтирование папки для логов
+      - ./logs:/app/logs:rw
+    environment:
+      - HF_HUB_OFFLINE=1
+      - HF_OFFLINE=1
+      - GRADIO_SERVER_NAME=0.0.0.0
+      - GRADIO_SERVER_PORT=7860
+      - LOG_LEVEL=INFO
+      - DEFAULT_NUM_SPEAKERS=2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - transcriber-network
+
+networks:
+  transcriber-network:
+    driver: bridge

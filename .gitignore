@@ -1,0 +1,83 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# .BAT
+runclaude.BAT
+setupclaude.BAT
+
+# Claude Code
+.claude
+claude.md
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv/
+
+# Models (⚠️ НЕ загружайте модели в репозиторий!)
+models/
+*.bin
+*.safetensors
+pytorch_model.bin
+model.safetensors
+*.pt
+*.pth
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Output files (опционально - можно раскомментировать)
+# output/
+# uploads/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Windows
+*.exe
+*.msi
+*.dll
+*.so
+*.dylib
+
+# Build artifacts
+win32/build/
+dist/
+build/
+
+# Resources (icons, images - can be downloaded)
+win32/resources/
+resources/

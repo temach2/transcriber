@@ -1,0 +1,27 @@
+# Qwen ASR
+qwen-asr>=0.0.6
+transformers>=4.45.0
+accelerate>=0.34.0
+torch>=2.4.0
+torchaudio>=2.4.0
+
+# Speaker Diarization
+pyannote.audio>=3.1.0
+pyannote.core>=5.0.0
+
+# Document Generation
+python-docx>=1.1.0
+
+# Web Interface
+gradio>=4.44.0
+
+# Audio Processing
+soundfile>=0.12.1
+audioread>=3.0.1
+librosa>=0.10.2
+
+# Utilities
+python-dotenv>=1.0.1
+loguru>=0.7.2
+tqdm>=4.66.0
+pyyaml>=6.0
